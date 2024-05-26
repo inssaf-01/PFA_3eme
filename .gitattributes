@@ -3,9 +3,9 @@
 
 # Specify programming languages for common file types.
 *.py linguist-language=Python
-*.html linguist-language=HTML
-*.css linguist-language=CSS
-*.js linguist-language=JavaScript
+#*.html linguist-language=HTML
+#*.css linguist-language=CSS
+#*.js linguist-language=JavaScript
 
 # Specify Django framework files.
 *.html linguist-vendored=false
