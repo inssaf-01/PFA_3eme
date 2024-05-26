@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'parts/nav_etud.html' %}  
+<h1>Modules et cours de {{ etudiant.nom }} {{ etudiant.prenom }}</h1>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    h1 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    table {
+        width: 70%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    
+    th, td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+    
+    th {
+        background-color: #1B9AAA;
+        color: white;
+    }
+    
+    tbody tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+    
+    tbody tr:hover {
+        background-color: #B0E0E6;
+    }
+    
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    
+    .button:hover {
+        background-color: #45a049;
+    }
+    
+    .valide {
+        background-color: green;
+        color: white;
+    }
+    
+    .rattrapage {
+        background-color: orange;
+        color: white;
+    }
+    
+    .echec {
+        background-color: red;
+        color: white;
+    }
+    
+    .module-separator {
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+    
+</style>
+<table>
+    <thead>
+        <tr>
+            <th>Module</th>
+            <th>Cours</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for module in modules %}
+        <tr>
+            <td>{{ module.nom_Module }}</td>
+            <td>
+                <ul>
+                    {% for cours in module.cours_set.all %}
+                    <li>{{ cours.nom_Cours }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

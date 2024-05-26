@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+
+
+<div class="container mt-5">
+  <h2 class="text-center alert alert-primary"> Enseignant </h2>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %} 
+    
+    <div class="form-row">
+      <div class="col-md-3">
+        <label for="{{ en.CIN.id_for_label }}" class="text-right">CIN:</label>
+      </div>
+      <div class="form-group col-md-9">
+        {{ en.CIN.errors }}
+        {{ en.CIN }}
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="col-md-3">
+        <label for="{{ en.nom.id_for_label }}" class="text-right">Nom:</label>
+      </div>
+      <div class="form-group col-md-9">
+        {{ en.nom.errors }}
+        {{ en.nom }}
+      </div>
+    </div>
+  
+    <div class="form-row">
+      <div class="col-md-3">
+        <label for="{{ en.prenom.id_for_label }}" class="text-right">Prénom:</label>
+      </div>
+      <div class="form-group col-md-9">
+        {{ en.prenom.errors }}
+        {{ en.prenom }}
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="col-md-3">
+        <label for="{{ en.titre_prof.id_for_label }}" class="text-right">Titre du prof:</label>
+      </div>
+      <div class="form-group col-md-9">
+        {{ en.titre_prof.errors }}
+        {{ en.titre_prof }}
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="col-md-3">
+        <label for="{{ en.tel.id_for_label }}" class="text-right">Téléphone:</label>
+      </div>
+      <div class="form-group col-md-9">
+        {{ en.tel.errors }}
+        {{ en.tel }}
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="col-md-3">
+        <label for="{{ en.email.id_for_label }}" class="text-right">Email:</label>
+      </div>
+      <div class="form-group col-md-9">
+        {{ en.email.errors }}
+        {{ en.email }}
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="col-md-3">
+        <label for="{{ en.salaire.id_for_label }}" class="text-right">Salaire:</label>
+      </div>
+      <div class="form-group col-md-9">
+        {{ en.salaire.errors }}
+        {{ en.salaire }}
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="col-md-3">
+        <label for="{{ en.cv.id_for_label }}" class="text-right">CV:</label>
+      </div>
+      <div class="form-group col-md-9">
+        {{ en.cv.errors }}
+        {{ en.cv }}
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-3"></div>
+      <div class="form-group col-md-9 text-right" style = "margin-right :300px">
+        <button type="submit" class="btn btn-primary">Entrer</button>
+      </div>
+    </div>
+   
+  </form>
+</div>
+
+{% endblock content %}

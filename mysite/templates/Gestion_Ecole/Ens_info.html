@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    {% comment %} Affichage d'informations d'un seul enseignant {% endcomment %}
+    <h4 class="text-center alert alert alert-info ">Les informations</h4>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 20px;
+        }
+      
+        h1 {
+          color: #333;
+          font-size: 24px;
+          margin-bottom: 20px;
+        }
+      
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 20px;
+        }
+      
+        th,
+        td {
+          padding: 8px;
+          text-align: center; /* Alignement au centre */
+          border-bottom: 1px solid #ccc;
+        }
+      
+        th {
+          background-color: #1B9AAA;
+          color: white;
+        }
+      
+        tbody tr:hover {
+          background-color: #B0E0E6;
+        }
+      </style>
+      
+      <h1>Détails de l'enseignant</h1>
+      
+      <table class="table table-hover" border="1">
+        <thead>
+          <tr>
+            <th scope="col">CIN</th>
+            <td>{{ e.CIN }}</td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <td>{{ e.nom }}</td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th scope="col">Prénom</th>
+            <td>{{ e.prenom }}</td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th scope="col">Titre de professeur</th>
+            <td>{{ e.titre_prof }}</td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th scope="col">Tel</th>
+            <td>{{ e.tel }}</td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th scope="col">Email</th>
+            <td>{{ e.email }}</td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th scope="col">Salaire</th>
+            <td>{{ e.salaire }}</td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th scope="col">CV</th>
+            <td>{{ e.cv }}</td>
+          </tr>
+        </thead>
+      </table>
+      
+            
+            
+            
+            
+            
+      
+
+
+
+  
+
+{% endblock content %}

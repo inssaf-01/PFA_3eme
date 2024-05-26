@@ -1,0 +1,28 @@
+ /* this one   */
+body{
+    
+    color: gray;
+}
+.col-sm-10{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.form-row {
+    display: block;
+  }
+.form-group {
+    display: block;
+  }
+
+.table{
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    
+}
+
+.alert-info{
+    text-align: center
+}
+

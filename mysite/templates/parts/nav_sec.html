@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style_nav.css' %}" >
+<div class="text-center">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="Secretaires">Secretaire <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mx-auto"> <!-- Utilisation de "mx-auto" pour centrer le contenu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Affichage
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="Aff_ens_sec">Enseignant</a>
+                        <a class="dropdown-item" href="Aff_etud_sec">Etudiants</a>
+                        <a class="dropdown-item" href="Horaire_T">Horaire</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>

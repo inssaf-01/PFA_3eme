@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+  
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+  
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+  
+    th {
+      background-color: #1B9AAA;
+      color: white;
+    }
+  
+    tbody tr:hover {
+      background-color: #B0E0E6;
+    }
+  
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  
+  <h1>Liste des enseignants à recruter</h1>
+  
+  <table>
+    <thead>
+      <tr >
+        <th>CIN</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Titre professionnel</th>
+        <th>Téléphone</th>
+        <th>Email</th>
+        <th>Salaire</th>
+        <th>CV</th>
+        <th>Accepter</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for enseignant_recrutement in enseignant_recrutements %}
+      <tr>
+        <td>{{ enseignant_recrutement.CIN }}</td>
+        <td>{{ enseignant_recrutement.nom }}</td>
+        <td>{{ enseignant_recrutement.prenom }}</td>
+        <td>{{ enseignant_recrutement.titre_prof }}</td>
+        <td>{{ enseignant_recrutement.tel }}</td>
+        <td>{{ enseignant_recrutement.email }}</td>
+        <td>{{ enseignant_recrutement.salaire }}</td>
+        <td>{{ enseignant_recrutement.cv }}</td>
+        <td>
+          <form action="{% url 'Acceptation_enseignant' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="cin" value="{{ enseignant_recrutement.CIN }}">
+            <button type="submit">Accepter</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+
+{% endblock %}

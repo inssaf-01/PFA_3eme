@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="container mt-5">
+  <h2 class="text-center alert alert-danger">Login</h2>
+  <form action="{% url 'logg' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <input type="text" class="form-control" name="username" placeholder="Entrez votre nom d'utilisateur">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" name="password" placeholder="Entrez votre mot de passe">
+    </div>
+    <div class="form-group col-md-9 ml-auto text-right">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+
+    <h4>Souhaitez-vous vous inscrire ou vous recruter ?</h4>
+    <a href="Ajout_Etud" class="btn btn-primary mb-2">Vous inscrire</a>
+    <a href="Ens" class="btn btn-primary mb-2">Vous recruter</a>
+  </form>
+</div>
+
+{% endblock content %}

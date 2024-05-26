@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .container {
+        margin-top: 50px;
+    }
+    
+    h1, h2 {
+        text-align: center;
+    }
+    
+    .alert-danger {
+        background-color: red;
+        color: white;
+        padding: 10px;
+    }
+    
+    form {
+        margin: 20px auto;
+        max-width: 400px;
+    }
+    
+    form input,
+    form select {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+    
+    form input[type="submit"] {
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    form input[type="submit"]:hover {
+        background-color: darkblue;
+    }
+</style>
+
+
+
+    <br>
+
+    <div class="container mt-5">
+        <h2 class="text-center alert alert-primary">Modification Etudiant</h2>
+        <form action="{% url 'modifetud3' form1.CNE %}" method="post">
+            {% csrf_token %}
+
+            <label for="nom">Nom :</label>
+            <input type="text" value="{{ form1.nom }}" name="n" id="nom" />
+
+            <label for="prenom">Prénom :</label>
+            <input type="text" value="{{ form1.prenom }}" name="pre" id="prenom" />
+
+            <label for="sexe">Sexe :</label>
+            <select name="s" id="sexe">
+                {% for choice in se %}
+                    {% if choice.0 == form1.sexe %}
+                        <option value="{{ choice.0 }}" selected>{{ choice.1 }}</option>
+                    {% else %}
+                        <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <label for="tel">Téléphone :</label>
+            <input type="text" value="{{ form1.tel }}" name="t" id="tel" />
+
+            <label for="email">Email :</label>
+            <input type="text" value="{{ form1.email }}" name="e" id="email" />
+
+            <label for="adresse">Adresse :</label>
+            <input type="text" value="{{ form1.adresse }}" name="ad" id="adresse" />
+
+            <label for="anneeBac">Année du Baccalauréat :</label>
+            <input type="text" value="{{ form1.annee_Bac }}" name="anb" id="anneeBac" />
+
+            <label for="parcours">Parcours :</label>
+            <select name="p" id="parcours">
+                {% for choice in p %}
+                    {% if choice.0 == form1.parcours %}
+                        <option value="{{ choice.0 }}" selected>{{ choice.1 }}</option>
+                    {% else %}
+                        <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <label for="codeOption">Code Option :</label>
+            <select name="cd" id="codeOption">
+                {% for option in opt %}
+                    {% if option == form1.code_Option %}
+                        <option value="{{ option }}" selected>{{ option }}</option>
+                    {% else %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <input type="submit" value="Envoyer" />
+
+        </form>
+    </div>
+
+
+
+{% endblock content %}

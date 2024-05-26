@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center alert alert-primary">Suppression Etudiant</h2>
+  <br>
+<script>
+  function openDialog() {
+    document.getElementById("myDialog").showModal();
+    document.getElementById("myDialog").removeAttribute("hidden");
+  }
+
+  function closeDialog() {
+    event.preventDefault();
+    document.getElementById("myDialog").setAttribute("hidden", "true");
+    
+  }
+
+  function confirmAction() {
+
+    var form = document.getElementById("deleteForm");
+    var cneInput = form.querySelector('input[name="cne"]');
+    etudiant = Etudiant.objects.get(CNE='input[name="cne"]')
+    
+    var confirmationMessage = document.getElementById("confirmationMessage");
+
+    
+
+    // Vérifier si le champ CNE est vide
+     if (cneInput.value === "") {
+      confirmationMessage.textContent = "Veuillez entrer le CNE de l'etudiant.";
+    } else   {
+      
+      confirmationMessage.textContent = "Etudiant avec CNE " + cneInput.value + " supprimé.";
+      form.submit(); // Soumettre le formulaire pour supprimer l'enseignant
+    }
+
+    closeDialog(); // Fermer la boîte de dialogue 
+  }
+</script>
+
+  <div class="text-center">
+    <form id="deleteForm" method="POST" action="{% url 'Supp_Etud' %}">
+      {% csrf_token %}
+      <dialog id="myDialog" hidden="true">
+        <input type="hidden" name="isConfirmed" id="isConfirmedInput" value="false">
+        <p>Voulez-vous vraiment supprimer l'étudiant avec ce CNE ?</p>
+        <button onclick="confirmAction()" class="btn btn-danger">Confirmer</button>
+        <button onclick="closeDialog()" class="btn btn-secondary">Annuler</button>
+      </dialog>
+      <div class="form-group">
+        <input type="text" name="cne"  placeholder="CNE de l'étudiant" required>
+      </div>
+      <button type="button" onclick="openDialog()" class="btn btn-primary">Supprimer</button>
+      <div>{{ message }}</div>
+      <div id="confirmationMessage"></div>
+    </form>
+  </div>
+</div>
+
+
+<style>
+  .narrower-input {
+    width: 200px; 
+  }
+</style>
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <br>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+    
+      h1 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+    
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+    
+      th,
+      td {
+        padding: 8px;
+        text-align: center; /* Alignement au centre */
+        border-bottom: 1px solid #ccc;
+      }
+    
+      th {
+        background-color: #1B9AAA;
+        color: white;
+      }
+    
+      tbody tr:hover {
+        background-color: #B0E0E6;
+      }
+    
+      button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+    
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+
+    <h1>Liste des horaires</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID Horaire</th>
+                <th>Numéro de Salle</th>
+                <th>CIN de l'Enseignant</th>
+                <th>Numéro de Cours</th>
+                <th>Date de Début</th>
+                <th>Date de Fin</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for horaire in horaires %}
+            <tr>
+                <td>{{ horaire.id_Horaire }}</td>
+                <td>{{ horaire.num_Salle }}</td>
+                <td>{{ horaire.CIN }}</td>
+                <td>{{ horaire.num_Cours }}</td>
+                <td>{{ horaire.date_Debut_C }}</td>
+                <td>{{ horaire.date_Fin_C }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

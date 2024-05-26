@@ -1,0 +1,46 @@
+ /* this one   */
+body{
+    
+    color: gray;
+}
+.col-sm-8{
+    margin-left: 100px;
+    margin-right: 50px;
+    text-align: center;
+}
+.label{
+    margin:10px;
+}
+.hidden {
+    display: none;
+  }
+  
+  
+.form-group {
+    display: block;
+  }
+
+.table{
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.alert-info{
+    text-align: center
+}
+.form-row {
+    display: block;
+    margin-bottom: 200px;
+    margin-top: 1000px;
+    padding-top: 100px;
+    width: 50%;
+  
+}
+.confirmationMessage{
+    margin-bottom: 200px;
+    margin-top: 1000px;
+}
+
+
+

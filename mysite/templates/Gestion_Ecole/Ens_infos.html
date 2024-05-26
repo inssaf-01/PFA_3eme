@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <br>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+    
+      h1 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+    
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+    
+      th,
+      td {
+        padding: 8px;
+        text-align: center; /* Alignement au centre */
+        border-bottom: 1px solid #ccc;
+      }
+    
+      th {
+        background-color: #1B9AAA;
+        color: white;
+      }
+    
+      tbody tr:hover {
+        background-color: #B0E0E6;
+      }
+    
+      button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+    
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+
+    <h1>Liste des enseignants</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>CIN</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Titre professionnel</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>CV</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in ens %}
+            <tr>
+                <td>{{ e.CIN }}</td>
+                <td>{{ e.nom }}</td>
+                <td>{{ e.prenom }}</td>
+                <td>{{ e.titre_prof }}</td>
+                <td>{{ e.tel }}</td>
+                <td>{{ e.email }}</td>
+                <td>
+                    <a href="{{ e.cv.url }}">Voir le CV</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

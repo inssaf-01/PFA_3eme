@@ -1,0 +1,13 @@
+
+
+{% block content %}
+<h1>Etudiant form </h1>
+<br>
+<form action="" method="POST">
+    {% csrf_token %} 
+    {{etf}}
+    <br>
+<input type="submit" value="S'inscrire" >
+</form>          
+
+ {% endblock content %}

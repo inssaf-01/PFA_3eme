@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'parts/nav_etud.html' %}  
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 70%; /* Largeur du tableau */
+        margin: 0 auto; /* Centrer le tableau horizontalement */
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+    }
+
+    th {
+        background-color: #1B9AAA;
+        color: white;
+    }
+
+    tbody tr:hover {
+        background-color: #B0E0E6;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    /* Couleur pour le résultat Validé */
+    .valide {
+        background-color: green;
+        color: white;
+    }
+
+    /* Couleur pour le résultat Rattrapage */
+    .rattrapage {
+        background-color: orange;
+        color: white;
+    }
+
+    /* Couleur pour le résultat Échec */
+    .echec {
+        background-color: red;
+        color: white;
+    }
+</style>
+
+<br>
+<h1>Liste des notes</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID Note</th>
+            <th>Module</th>
+            <th>Note du Module</th>
+            <th>Résultat</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for note in notes %}
+        <tr>
+            <td>{{ note.id_Note }}</td>
+            <td>{{ note.num_Module }}</td>
+            <td>{{ note.note_Module }}</td>
+            <td class="{% if note.resultat == 'V' %}valide{% elif note.resultat == 'R' %}rattrapage{% else %}echec{% endif %}">
+                {{ note.get_resultat_display }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

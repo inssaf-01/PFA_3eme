@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    
+
+    <h1>Liste des horaires</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID Horaire</th>
+                <th>Numéro de Salle</th>
+                <th>CIN de l'Enseignant</th>
+                <th>Numéro de Cours</th>
+                <th>Date de Début</th>
+                <th>Date de Fin</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for horaire in horaires %}
+            <tr>
+                <td>{{ horaire.id_Horaire }}</td>
+                <td>{{ horaire.num_Salle }}</td>
+                <td>{{ horaire.CIN }}</td>
+                <td>{{ horaire.num_Cours }}</td>
+                <td>{{ horaire.date_Debut_C }}</td>
+                <td>{{ horaire.date_Fin_C }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

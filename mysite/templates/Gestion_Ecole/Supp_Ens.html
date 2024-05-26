@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% comment %} <h1>Suppression Enseignant</h1>
+<br>
+
+<h1>1ere</h1>
+<form method="POST" action="{% url 'Supp_Ens' %}">
+    {% csrf_token %}
+    <label for="cin">CIN :</label>
+    <input type="text" name="cin" id="Enseignant.CIN">
+    <button type="submit">Supprimer</button>
+</form> 
+<h1>2eme</h1>
+
+<form id="deleteForm" method="POST" action="{% url 'Supp_Ens' %}">
+    {% csrf_token %}
+    <dialog id="myDialog" >
+      <p>Voulez-vous vraiment supprimer l'enseignant avec le CIN : {{ enseignant.CIN }}?</p>
+      <button onclick="confirmAction()">Confirmer</button>
+      <button onclick="closeDialog()">Annuler</button>
+    </dialog>
+    <input type="text" name="cin" placeholder="CIN de l'enseignant" required>
+    <button type="button" onclick="openDialog()">Supprimer</button>
+    
+    <div id="confirmationMessage"></div>
+  
+  
+  </form>
+
+{% endblock content %} {% endcomment %} 
+
+
+
+
+{% load static %}
+{% block content %}
+<script>
+  function openDialog() {
+    document.getElementById("myDialog").showModal();
+    document.getElementById("myDialog").removeAttribute("hidden");
+  }
+
+  function closeDialog() {
+    event.preventDefault();
+    document.getElementById("myDialog").setAttribute("hidden", "true");
+    
+  }
+
+  function confirmAction() {
+
+    var form = document.getElementById("deleteForm");
+    var cinInput = form.querySelector('input[name="cin"]');
+    enseignant = Enseignant.objects.get(CIN='input[name="cin"]')
+    
+    var confirmationMessage = document.getElementById("confirmationMessage");
+
+    
+
+    // Vérifier si le champ cin est vide
+     if (cinInput.value === "") {
+      confirmationMessage.textContent = "Veuillez entrer le CIN de l'enseignant.";
+    } else   {
+      
+      confirmationMessage.textContent = "Enseignant avec CIN " + cinInput.value + " supprimé.";
+      form.submit(); // Soumettre le formulaire pour supprimer l'enseignant
+    }
+
+    closeDialog(); // Fermer la boîte de dialogue 
+  }
+</script>
+
+
+
+
+  
+
+
+
+
+<div class="container mt-5">
+  <h2 class="text-center alert alert-primary">Suppression Enseignant</h2>
+  <br>
+
+
+  <div class="text-center">
+    <form id="deleteForm" method="POST" action="{% url 'Supp_Ens' %}">
+      {% csrf_token %}
+      <dialog id="myDialog" hidden="true">
+        <input type="hidden" name="isConfirmed" id="isConfirmedInput" value="false">
+        <p>Voulez-vous vraiment supprimer cet enseignant ?</p>
+        <button onclick="confirmAction()">Confirmer</button>
+        <button onclick="closeDialog()">Annuler</button>
+      </dialog>
+      <div class="form-group">
+        <input type="text" name="cin" placeholder="CIN de l'enseignant" required>
+      </div>
+      <button type="button" onclick="openDialog()" class="btn btn-primary">Supprimer</button>
+      <div>{{ message }}</div>
+      <div id="confirmationMessage"></div>
+    </form>
+  </div>
+</div>
+
+<script src="{% static 'js/confirm_etud.js' %}"></script>
+<style>
+  .narrower-input {
+    width: 200px; 
+  }</style>
+
+
+
+{% endblock content %}
